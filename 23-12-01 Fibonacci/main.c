@@ -18,8 +18,8 @@ void array_print(int* array, const int* limit) {
 }
 
 int main(void) {
-    int array[] = {};
-    array_fib(array, array);
-    array_print(array, array);
+    int array[20] = {0};
+    array_fib(array, array + 20);
+    array_print(array, array + 20);
     return 0;
 }

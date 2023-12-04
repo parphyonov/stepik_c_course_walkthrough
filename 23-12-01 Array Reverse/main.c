@@ -10,7 +10,7 @@ void array_reverse(int* array, int size) {
     }
 }
 
-void array_reverse_ptr(int* array, const int* limit) {
+void array_reverse_ptr(int* array, int* limit) {
     long int halfsize = (limit - array) / 2;
     for (int* p = array; p < array + halfsize; p++) {
         int tmp = *p;

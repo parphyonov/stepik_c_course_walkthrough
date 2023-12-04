@@ -1,12 +1,30 @@
 CC=gcc
 FLAGS=-Wall -Werror -Wextra
-DIR=./23-12-01\ Fibonacci/
 OUT=a.out
 
 all: main
 
-main:
-	$(CC) $(FLAGS) $(DIR)/main.c
+main: clean
+
+all_devisors: clean
+	$(CC) $(FLAGS) ./23-11-30\ All\ Devisors/main.c
+	make run
+
+factorize: clean
+	$(CC) $(FLAGS) ./23-11-30\ Factorize/main.c
+	make run
+
+array_reverse: clean
+	$(CC) $(FLAGS) ./23-12-01\ Array\ Reverse/main.c
+	make run
+
+fibonacci: clean
+	$(CC) $(FLAGS) ./23-12-01\ Fibonacci/main.c
+	make run
+
+predicate: clean
+	$(CC) $(FLAGS) ./23-12-04\ Predicate/main.c
+	make run
 
 run:
 	./$(OUT)
