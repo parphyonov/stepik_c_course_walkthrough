@@ -1,13 +1,11 @@
 #include <stdio.h>
 
-int predicate(int num) {
-    return num % 3 == 0;
-}
+int predicate(int num) { return num % 3 == 0; }
 
-int array_contains(int* array, int* limit, int** position) {
+int array_contains(int* array, const int* limit, int** position) {
     int out = 0;
     *position = array;
-    for (int *p = array; p < limit; p++) {
+    for (int* p = array; p < limit; p++) {
         if (predicate(*p)) {
             **position = *p;
             out = 1;
