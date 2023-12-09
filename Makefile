@@ -30,6 +30,10 @@ str_ct_wc: clean
 	$(CC) $(FLAGS) ./23-12-05\ String\ Length\ Words/main.c
 	make run
 
+ct_0: clean
+	$(CC) $(FLAGS) ./23-12-07\ Count\ Zeros/main.c
+	make run
+
 run:
 	./$(OUT)
 
