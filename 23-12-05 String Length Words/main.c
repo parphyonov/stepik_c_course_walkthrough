@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int string_count(char* str) {
+int string_count(const char* str) {
     int pos = 0;
     if (str[0] != '\0') {
         while (str[pos] != '\0') pos++;
@@ -8,7 +8,7 @@ int string_count(char* str) {
     return pos;
 }
 
-int string_words(char* str) {
+int string_words(const char* str) {
     int words = 0;
     if (str[0] != '\0') {
         int pos = 0;
@@ -23,7 +23,7 @@ int string_words(char* str) {
 }
 
 int main(void) {
-    char* mystr = "hello  world";
+    const char* mystr = "hello  world";
     printf("Length >>> %d;\n", string_count(mystr));
     printf("Words >>> %d;\n", string_words(mystr));
     return 0;

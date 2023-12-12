@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 size_t count_zeroes(const void* data, size_t sz) {
-    char* bytePtr = (char*) data;
+    const char* bytePtr = (char*)data;
     size_t count = 0;
     for (size_t i = 0; i < sz; i++) {
         if (bytePtr[i] == 0) count++;

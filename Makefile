@@ -34,6 +34,10 @@ ct_0: clean
 	$(CC) $(FLAGS) ./23-12-07\ Count\ Zeros/main.c
 	make run
 
+dyna: clean
+	$(CC) $(FLAGS) ./23-12-12\ Dynamic\ Arrays/main.c
+	make run
+
 run:
 	./$(OUT)
 
