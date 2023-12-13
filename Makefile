@@ -42,7 +42,7 @@ run:
 	./$(OUT)
 
 fclang:
-	clang-format -i */*.c
+	clang-format -i */*.c *.c
 
 cpp:
 	cppcheck --enable=all --suppress=missingIncludeSystem .
