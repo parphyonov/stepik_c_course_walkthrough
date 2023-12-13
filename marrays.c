@@ -48,15 +48,19 @@ void marray_print(int64_t** marray, const size_t* sizes, size_t rows) {
     }
 }
 
+void marray_free( int64_t** marray, size_t rows ) {
+    for (size_t r = 0; r < rows; r++) free(marray[r]);
+    free(marray);
+}
+
 int main(void) {
     size_t rows = 0;
     size_t* sizes = NULL;
     int64_t** marray = marray_read(&rows, &sizes);
     // output
     marray_print(marray, sizes, rows);
-    // free
-    for (size_t r = 0; r < rows; r++) free(marray[r]);
+    // free  
     free(sizes);
-    free(marray);
+    marray_free(marray, rows);
     return 0;
 }
