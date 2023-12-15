@@ -38,6 +38,10 @@ dyna: clean
 	$(CC) $(FLAGS) ./23-12-12\ Dynamic\ Arrays/main.c
 	make run
 
+multi: clean
+	$(CC) $(FLAGS) ./23-12-13\ Multi\ Arrays/main.c
+	make run
+
 run:
 	./$(OUT)
 

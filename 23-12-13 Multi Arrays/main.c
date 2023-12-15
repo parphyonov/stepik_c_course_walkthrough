@@ -48,18 +48,51 @@ void marray_print(int64_t** marray, const size_t* sizes, size_t rows) {
     }
 }
 
-void marray_free( int64_t** marray, size_t rows ) {
+void marray_free(int64_t** marray, size_t rows) {
     for (size_t r = 0; r < rows; r++) free(marray[r]);
     free(marray);
 }
 
+int64_t* int64_ptr_min(int64_t* x, int64_t* y) {
+    int64_t* out = NULL;
+    if (x != NULL && y != NULL) {
+        if (*x > *y) out = y;
+        else out = x;
+    } else if (x == NULL) out = y;
+    else if (y == NULL) out = x;
+    return out;
+}
+
+int64_t* marray_int_min(int64_t** marray, size_t* sizes, size_t rows) {
+    int64_t* min = NULL;
+    for (size_t r = 0; r < rows; r++)
+        for (size_t c = 0; c < sizes[r]; c++)
+            min = int64_ptr_min(min, &marray[r][c]);
+    return min;
+}
+
+void marray_normalize( int64_t** marray, size_t* sizes, size_t rows, int64_t m ) {
+    for (size_t r = 0; r < rows; r++)
+        for (size_t c = 0; c < sizes[r]; c++)
+            marray[r][c] -= m;
+}
+
+// Test Sequence
+// 3 3 1 2 3 3 4 5 6 3 7 8 -9
 int main(void) {
+    // inits
     size_t rows = 0;
     size_t* sizes = NULL;
     int64_t** marray = marray_read(&rows, &sizes);
+    // finding min
+    int64_t* min = marray_int_min(marray, sizes, rows);
+    // normalize
+    if (min != NULL) {
+        marray_normalize(marray, sizes, rows, *min);
+    }
     // output
     marray_print(marray, sizes, rows);
-    // free  
+    // free
     free(sizes);
     marray_free(marray, rows);
     return 0;
