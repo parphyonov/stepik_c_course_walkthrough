@@ -56,25 +56,27 @@ void marray_free(int64_t** marray, size_t rows) {
 int64_t* int64_ptr_min(int64_t* x, int64_t* y) {
     int64_t* out = NULL;
     if (x != NULL && y != NULL) {
-        if (*x > *y) out = y;
-        else out = x;
-    } else if (x == NULL) out = y;
-    else if (y == NULL) out = x;
+        if (*x > *y)
+            out = y;
+        else
+            out = x;
+    } else if (x == NULL)
+        out = y;
+    else if (y == NULL)
+        out = x;
     return out;
 }
 
 int64_t* marray_int_min(int64_t** marray, size_t* sizes, size_t rows) {
     int64_t* min = NULL;
     for (size_t r = 0; r < rows; r++)
-        for (size_t c = 0; c < sizes[r]; c++)
-            min = int64_ptr_min(min, &marray[r][c]);
+        for (size_t c = 0; c < sizes[r]; c++) min = int64_ptr_min(min, &marray[r][c]);
     return min;
 }
 
-void marray_normalize( int64_t** marray, size_t* sizes, size_t rows, int64_t m ) {
+void marray_normalize(int64_t** marray, size_t* sizes, size_t rows, int64_t m) {
     for (size_t r = 0; r < rows; r++)
-        for (size_t c = 0; c < sizes[r]; c++)
-            marray[r][c] -= m;
+        for (size_t c = 0; c < sizes[r]; c++) marray[r][c] -= m;
 }
 
 // Test Sequence
